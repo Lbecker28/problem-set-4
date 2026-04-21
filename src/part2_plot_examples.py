@@ -30,16 +30,19 @@ def barplots(charge_counts, charge_counts_by_offense):
     - Horizontal barplot
     - Vertical barplot with hue based on offense category
     '''
+    plt.close('all') 
     sns.barplot(data=charge_counts, 
                 x='charge_degree',
                 y='count')
     plt.savefig('./data/part2_plots/vertical_barplot.png', bbox_inches='tight')
+    plt.close('all') 
 
     sns.barplot(data=charge_counts, 
                 y='charge_degree', 
                 x='count', 
                 orient='h')
     plt.savefig('./data/part2_plots/horizontal_barplot.png', bbox_inches='tight')
+    plt.close('all') 
 
     sns.barplot(data=charge_counts_by_offense, 
                 x='charge_degree',
@@ -60,11 +63,13 @@ def cat_plots(charge_counts, pred_universe):
     - Categorical bar plot for charge degree counts
     - Categorical bar plot for non-felony predictions by sex
     '''
+    plt.close('all') 
     sns.catplot(data=charge_counts,
                 x='charge_degree',
                 y='count', 
                 kind='bar')
     plt.savefig('./data/part2_plots/catplot1.png', bbox_inches='tight')
+    plt.close('all') 
 
     sns.catplot(data=pred_universe, 
                 x='sex',
@@ -85,14 +90,17 @@ def histograms(pred_universe):
     - Histogram with a specified number of bins
     - Histogram with specified bins and probability as the statistic
     '''
+    plt.close('all') 
     sns.histplot(data=pred_universe, 
                  x='prediction_nonfelony')
     plt.savefig('./data/part2_plots/histogram1.png', bbox_inches='tight')
+    plt.close('all') 
 
     sns.histplot(data=pred_universe, 
                  x='prediction_nonfelony',
                  bins=10)
     plt.savefig('./data/part2_plots/histogram2.png', bbox_inches='tight')
+    plt.close('all') 
 
     sns.histplot(data=pred_universe, 
                  x='prediction_nonfelony', 
@@ -115,16 +123,19 @@ def scatterplot(pred_universe):
     - Scatterplot with hue by race
     - Scatterplot faceted by sex with hue by race
     '''
+    plt.close('all') 
     sns.lmplot(data=pred_universe, 
                x='prediction_felony', 
                y='prediction_nonfelony',
                fit_reg=False)
     plt.savefig('./data/part2_plots/scatterplot1.png', bbox_inches='tight')
+    plt.close('all') 
 
     sns.lmplot(data=pred_universe, 
                x='prediction_felony', 
                y='prediction_nonfelony')
     plt.savefig('./data/part2_plots/scatterplot2.png', bbox_inches='tight')
+    plt.close('all') 
 
     sp = sns.lmplot(data=pred_universe, 
                     x='prediction_felony', 
@@ -134,6 +145,7 @@ def scatterplot(pred_universe):
                  color='g',
                  dashes=(2, 2))
     plt.savefig('./data/part2_plots/scatterplot3.png', bbox_inches='tight')
+    plt.close('all') 
 
     sp = sns.lmplot(data=pred_universe, 
                     x='prediction_felony', 
@@ -144,7 +156,8 @@ def scatterplot(pred_universe):
                  color='b', 
                  dashes=(2, 2))
     plt.savefig('./data/part2_plots/scatterplot4.png', bbox_inches='tight')
-
+    plt.close('all') 
+    
     sp = sns.lmplot(data=pred_universe, 
                     x='prediction_felony', 
                     y='prediction_nonfelony', 
